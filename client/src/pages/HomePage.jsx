@@ -44,22 +44,22 @@ const heroGallery = [
 
 const moveMoments = [
   {
-    src: 'https://images.unsplash.com/photo-1595079835353-fb3f0a4f4f34?auto=format&fit=crop&w=900&q=80',
+    src: 'https://images.unsplash.com/photo-1606788075761-6f5d6e63d5a0?auto=format&fit=crop&w=900&q=80',
     alt: 'Movers wrapping furniture carefully before transport',
     title: 'Furniture wrapping'
   },
   {
-    src: 'https://images.unsplash.com/photo-1603796846097-bee99e4a601f?auto=format&fit=crop&w=900&q=80',
+    src: 'https://images.unsplash.com/photo-1611419010196-a360856fc42f?auto=format&fit=crop&w=900&q=80',
     alt: 'Delivery truck on the road for interstate logistics service',
     title: 'On-road delivery'
   },
   {
-    src: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80',
+    src: 'https://images.unsplash.com/photo-1586528116493-a029325540fa?auto=format&fit=crop&w=900&q=80',
     alt: 'Warehouse style moving boxes stacked and labeled for relocation',
     title: 'Organized box handling'
   },
   {
-    src: 'https://images.unsplash.com/photo-1604147706283-d7119b5b822c?auto=format&fit=crop&w=900&q=80',
+    src: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=900&q=80',
     alt: 'Team member carrying packed cartons into a new home',
     title: 'Doorstep delivery support'
   }
@@ -67,12 +67,12 @@ const moveMoments = [
 
 const quoteVisuals = [
   {
-    src: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=900&q=80',
+    src: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80',
     alt: 'Family relocation boxes packed neatly inside a home',
     caption: 'Household shifting with careful room-by-room packing'
   },
   {
-    src: 'https://images.unsplash.com/photo-1616400619175-5beda3a17896?auto=format&fit=crop&w=900&q=80',
+    src: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80',
     alt: 'Commercial mover handling office cartons and business equipment',
     caption: 'Office moves planned to reduce downtime'
   }

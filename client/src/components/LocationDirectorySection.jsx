@@ -12,6 +12,15 @@ const summaryItems = [
   { icon: Building2, label: 'Home, Office, Vehicle Moves' }
 ];
 
+const formatLocationLabel = (city) =>
+  city === 'Navimumbai'
+    ? 'Navi Mumbai'
+    : city === 'Greaternoida'
+      ? 'Greater Noida'
+      : city === 'Portblair'
+        ? 'Port Blair'
+        : city;
+
 export default function LocationDirectorySection() {
   const [query, setQuery] = useState('');
 
@@ -20,42 +29,35 @@ export default function LocationDirectorySection() {
     () =>
       locationColumns.flat().map((city) => ({
         rawCity: city,
-        label:
-          city === 'Navimumbai'
-            ? 'Navi Mumbai'
-            : city === 'Greaternoida'
-              ? 'Greater Noida'
-              : city === 'Portblair'
-                ? 'Port Blair'
-                : city
+        label: formatLocationLabel(city)
       })),
     []
   );
 
-  const filteredLocations = useMemo(() => {
+  const filteredFlatLocations = useMemo(() => {
+    if (!normalizedQuery) {
+      return allLocations;
+    }
+
+    return allLocations.filter((location) => location.label.toLowerCase().includes(normalizedQuery));
+  }, [allLocations, normalizedQuery]);
+
+  const desktopColumns = useMemo(() => {
     if (!normalizedQuery) {
       return locationColumns.map((column) =>
         column.map((city) => ({
           rawCity: city,
-          label:
-            city === 'Navimumbai'
-              ? 'Navi Mumbai'
-              : city === 'Greaternoida'
-                ? 'Greater Noida'
-                : city === 'Portblair'
-                  ? 'Port Blair'
-                  : city
+          label: formatLocationLabel(city)
         }))
       );
     }
 
-    const matches = allLocations.filter((location) => location.label.toLowerCase().includes(normalizedQuery));
-    const chunkSize = Math.ceil(matches.length / 5) || 1;
+    const chunkSize = Math.ceil(filteredFlatLocations.length / 5) || 1;
 
-    return Array.from({ length: 5 }, (_, index) => matches.slice(index * chunkSize, (index + 1) * chunkSize)).filter(
-      (column) => column.length > 0
-    );
-  }, [allLocations, normalizedQuery]);
+    return Array.from({ length: 5 }, (_, index) =>
+      filteredFlatLocations.slice(index * chunkSize, (index + 1) * chunkSize)
+    ).filter((column) => column.length > 0);
+  }, [filteredFlatLocations, normalizedQuery]);
 
   return (
     <AnimatedSection className="section-pad border-t border-white/70 bg-gradient-to-b from-white/80 to-[#fff8ef]">
@@ -134,12 +136,26 @@ export default function LocationDirectorySection() {
               />
             </div>
             <p className="mt-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-              {normalizedQuery ? `${filteredLocations.flat().length} matching locations found` : `${allLocations.length} total locations available`}
+              {normalizedQuery ? `${filteredFlatLocations.length} matching locations found` : `${allLocations.length} total locations available`}
             </p>
           </div>
-          {filteredLocations.length > 0 ? (
-            <div className="grid gap-x-10 gap-y-4 md:grid-cols-2 xl:grid-cols-5">
-              {filteredLocations.map((column, columnIndex) => (
+          {filteredFlatLocations.length > 0 ? (
+            <>
+              <div className="mt-6 grid gap-3 md:hidden">
+                {filteredFlatLocations.map(({ rawCity, label }) => (
+                  <Link
+                    key={rawCity}
+                    to={`/locations/${createLocationSlug(rawCity)}`}
+                    className="group flex items-start gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold leading-7 text-slate-700 transition hover:border-brand-300 hover:bg-brand-50 hover:text-brand-700"
+                  >
+                    <span className="mt-2 h-2 w-2 rounded-full bg-slate-400 transition group-hover:bg-brand-600" />
+                    <span>Packers & Movers {label}</span>
+                  </Link>
+                ))}
+              </div>
+
+              <div className="hidden gap-x-10 gap-y-4 md:grid md:grid-cols-2 xl:grid-cols-5">
+                {desktopColumns.map((column, columnIndex) => (
               <ul key={columnIndex} className="mt-6 space-y-3">
                 {column.map(({ rawCity, label }) => {
                   return (
@@ -155,8 +171,9 @@ export default function LocationDirectorySection() {
                   );
                 })}
               </ul>
-              ))}
-            </div>
+                ))}
+              </div>
+            </>
           ) : (
             <div className="mt-6 rounded-[1.75rem] border border-dashed border-slate-300 bg-slate-50 p-8 text-center">
               <h4 className="font-display text-2xl font-bold text-ink">No city matched your search</h4>
