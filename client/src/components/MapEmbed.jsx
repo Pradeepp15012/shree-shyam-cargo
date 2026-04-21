@@ -7,7 +7,7 @@ export default function MapEmbed() {
   const directionsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(company.address)}`;
 
   return (
-    <div className="overflow-hidden rounded-3xl border border-white/50 bg-white shadow-soft">
+    <div className="premium-card overflow-hidden">
       <iframe
         title="Business location"
         src={embedUrl}
@@ -16,10 +16,11 @@ export default function MapEmbed() {
         referrerPolicy="no-referrer-when-downgrade"
         allowFullScreen
       />
-      <div className="flex flex-col gap-3 border-t border-slate-200 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-3 border-t border-[#ece3d8] px-5 py-5 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-sm font-semibold text-ink">{company.shortName}</p>
-          <p className="mt-1 text-sm text-slate-600">{company.address}</p>
+          <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-accentDark">Office Location</p>
+          <p className="mt-2 font-display text-2xl font-bold text-ink">{company.shortName}</p>
+          <p className="mt-1 text-sm leading-7 text-slate-600">{company.address}</p>
         </div>
         <a
           href={directionsUrl}

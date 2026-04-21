@@ -10,7 +10,12 @@ export default function LeadForm({
   serviceOptions = []
 }) {
   return (
-    <form onSubmit={onSubmit} className="glass-card space-y-4 p-6 sm:p-8">
+    <form onSubmit={onSubmit} className="premium-card space-y-4 p-6 sm:p-8">
+      <div className="border-b border-[#ece3d8] pb-5">
+        <p className="text-xs font-extrabold uppercase tracking-[0.26em] text-accentDark">Quick Coordination</p>
+        <h3 className="mt-2 font-display text-3xl font-bold text-ink">Tell us about your move</h3>
+        <p className="mt-2 text-sm leading-7 text-slate-600">Share your route, service type, and schedule. Our team will get back quickly with planning support.</p>
+      </div>
       <div className="grid gap-4 sm:grid-cols-2">
         <input
           className="input-field"
@@ -97,4 +102,3 @@ export default function LeadForm({
     </form>
   );
 }
-

@@ -54,7 +54,7 @@ export default function ContactPage() {
 
       <AnimatedSection className="section-pad">
         <div className="container-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
+          <div className="section-hero p-8 sm:p-10">
             <SectionHeading
               eyebrow="Contact"
               title="Talk to our relocation support team"
@@ -67,10 +67,11 @@ export default function ContactPage() {
               <a href={whatsappLink} target="_blank" rel="noreferrer" className="btn-secondary w-full sm:w-auto">
                 WhatsApp Chat
               </a>
-              <div className="glass-card p-6">
-                <p className="font-semibold text-ink">{company.phone}</p>
-                <p className="mt-2 text-sm text-slate-600">{company.email}</p>
-                <p className="mt-2 text-sm text-slate-600">{company.address}</p>
+              <div className="premium-card p-6">
+                <p className="text-xs font-extrabold uppercase tracking-[0.24em] text-accentDark">Direct Contact</p>
+                <p className="mt-2 font-display text-3xl font-bold text-ink">{company.phone}</p>
+                <p className="mt-3 text-sm text-slate-600">{company.email}</p>
+                <p className="mt-2 text-sm leading-7 text-slate-600">{company.address}</p>
               </div>
             </div>
           </div>
@@ -90,7 +91,7 @@ export default function ContactPage() {
           <SectionHeading
             eyebrow="Location"
             title="Visit or locate our office"
-            description="Embed this map with your real Google Maps business location before deployment."
+            description="Use the map below for directions, business location visibility, and quick route planning."
           />
           <div className="mt-10">
             <MapEmbed />

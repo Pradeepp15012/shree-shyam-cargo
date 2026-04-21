@@ -78,6 +78,8 @@ const quoteVisuals = [
   }
 ];
 
+const routeHighlights = ['Jaipur to Delhi', 'Mumbai to Pune', 'Ahmedabad to Hyderabad'];
+
 export default function HomePage() {
   const [formData, setFormData] = useState(defaultForm);
   const [loading, setLoading] = useState(false);
@@ -111,15 +113,15 @@ export default function HomePage() {
       />
 
       <section className="relative overflow-hidden">
-        <div className="container-shell grid min-h-[calc(100vh-5rem)] items-center gap-12 py-16 lg:grid-cols-[1.2fr_0.8fr] lg:py-24">
+        <div className="container-shell grid min-h-[calc(100vh-6rem)] items-center gap-12 py-14 lg:grid-cols-[1.12fr_0.88fr] lg:py-20">
           <div>
-            <p className="inline-flex rounded-full border border-brand-200 bg-brand-50 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-700">
+            <p className="eyebrow-pill">
               PAN India Relocation Experts
             </p>
-            <h1 className="mt-6 max-w-3xl font-display text-5xl font-extrabold leading-tight text-ink sm:text-6xl">
-              Reliable Packers & Movers for Stress-Free Relocation.
+            <h1 className="mt-6 max-w-4xl font-display text-6xl font-bold leading-[0.95] text-ink sm:text-7xl">
+              Premium movers for homes, offices, and high-trust relocations across India.
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+            <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600 sm:text-xl">
               Trusted home shifting, office relocation, cargo transport, and vehicle moving services with fast response,
               safe handling, and transparent coordination.
             </p>
@@ -134,56 +136,74 @@ export default function HomePage() {
               </a>
             </div>
 
+            <div className="mt-8 flex flex-wrap gap-3">
+              {routeHighlights.map((route) => (
+                <div key={route} className="rounded-full border border-[#dcccbc] bg-white/70 px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm">
+                  {route}
+                </div>
+              ))}
+            </div>
+
             <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
               {stats.map((item) => (
-                <div key={item.label} className="rounded-3xl border border-white/60 bg-white/80 p-5 shadow-soft">
-                  <p className="font-display text-3xl font-extrabold text-ink">{item.value}</p>
-                  <p className="mt-2 text-sm text-slate-600">{item.label}</p>
+                <div key={item.label} className="metric-card">
+                  <p className="font-display text-4xl font-bold text-ink">{item.value}</p>
+                  <p className="mt-2 text-sm font-semibold uppercase tracking-[0.14em] text-slate-500">{item.label}</p>
                 </div>
               ))}
             </div>
           </div>
 
           <div className="space-y-5">
-            <div className="grid gap-5 sm:grid-cols-[1.1fr_0.9fr]">
-              <div className="glass-card overflow-hidden p-3">
-                <div className="relative h-[320px] overflow-hidden rounded-[2rem]">
-                  <img
-                    src={heroGallery[0].src}
-                    alt={heroGallery[0].alt}
-                    className="h-full w-full object-cover"
-                  />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent p-5 text-white">
-                    <p className="text-xs font-bold uppercase tracking-[0.25em] text-accent">Live Moving Operations</p>
-                    <p className="mt-2 font-display text-2xl font-bold">{heroGallery[0].label}</p>
-                  </div>
-                </div>
-              </div>
-              <div className="grid gap-5">
-                {heroGallery.slice(1).map((image) => (
-                  <div key={image.label} className="glass-card overflow-hidden p-3">
-                    <div className="relative h-[148px] overflow-hidden rounded-[1.75rem]">
-                      <img src={image.src} alt={image.alt} className="h-full w-full object-cover" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-transparent" />
-                      <p className="absolute bottom-4 left-4 right-4 font-display text-lg font-bold text-white">{image.label}</p>
+            <div className="section-hero soft-grid p-4 sm:p-5">
+              <div className="grid gap-5 sm:grid-cols-[1.1fr_0.9fr]">
+                <div className="glass-card overflow-hidden p-3">
+                  <div className="relative h-[360px] overflow-hidden rounded-[2rem]">
+                    <img
+                      src={heroGallery[0].src}
+                      alt={heroGallery[0].alt}
+                      className="h-full w-full object-cover"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/85 via-slate-950/25 to-transparent p-5 text-white">
+                      <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#f0cda8]">Live Moving Operations</p>
+                      <p className="mt-2 font-display text-3xl font-bold">{heroGallery[0].label}</p>
                     </div>
                   </div>
-                ))}
+                </div>
+                <div className="grid gap-5">
+                  {heroGallery.slice(1).map((image) => (
+                    <div key={image.label} className="glass-card overflow-hidden p-3">
+                      <div className="relative h-[168px] overflow-hidden rounded-[1.75rem]">
+                        <img src={image.src} alt={image.alt} className="h-full w-full object-cover" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                        <p className="absolute bottom-4 left-4 right-4 font-display text-2xl font-bold text-white">{image.label}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-            <div className="glass-card p-4 sm:p-6">
-              <div className="rounded-[2rem] bg-gradient-to-br from-ink via-brand-800 to-brand-500 p-8 text-white">
-                <p className="text-sm font-bold uppercase tracking-[0.2em] text-accent">Instant Support</p>
-                <h2 className="mt-4 font-display text-3xl font-bold">Move smarter with a team that plans every detail.</h2>
-                <ul className="mt-6 space-y-4 text-sm text-white/85">
-                  <li>Premium packing materials and careful handling</li>
-                  <li>Dedicated move coordination and tracking updates</li>
-                  <li>Affordable intercity and local shifting packages</li>
-                </ul>
-                <Link to="/get-quote" className="btn-secondary mt-8 w-full">
-                  Start Your Quote
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
+
+              <div className="mt-5 grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+                <div className="premium-dark p-7">
+                  <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#f0cda8]">Instant Support</p>
+                  <h2 className="mt-4 font-display text-4xl font-bold">Move smarter with a team that plans every detail.</h2>
+                  <ul className="mt-6 space-y-4 text-sm leading-8 text-white/85">
+                    <li>Premium packing materials and careful handling</li>
+                    <li>Dedicated move coordination and tracking updates</li>
+                    <li>Affordable intercity and local shifting packages</li>
+                  </ul>
+                </div>
+                <div className="premium-card p-6">
+                  <p className="text-xs font-extrabold uppercase tracking-[0.24em] text-accentDark">Move Concierge</p>
+                  <p className="mt-2 font-display text-3xl font-bold text-ink">Quote support within minutes</p>
+                  <p className="mt-3 text-sm leading-7 text-slate-600">
+                    From first survey to final delivery planning, we keep the move simple, responsive, and transparent.
+                  </p>
+                  <Link to="/get-quote" className="btn-secondary mt-6 w-full">
+                    Start Your Quote
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -208,7 +228,7 @@ export default function HomePage() {
 
       <AnimatedSection className="section-pad pt-0">
         <div className="container-shell">
-          <div className="glass-card overflow-hidden p-6 sm:p-8">
+          <div className="section-hero overflow-hidden p-6 sm:p-8">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div className="max-w-2xl">
                 <p className="text-sm font-bold uppercase tracking-[0.2em] text-brand-700">Moving In Action</p>
@@ -222,10 +242,10 @@ export default function HomePage() {
             </div>
             <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
               {moveMoments.map((image) => (
-                <div key={image.title} className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-soft">
+                <div key={image.title} className="premium-card overflow-hidden">
                   <img src={image.src} alt={image.alt} className="h-64 w-full object-cover" />
                   <div className="p-5">
-                    <p className="font-display text-xl font-bold text-ink">{image.title}</p>
+                    <p className="font-display text-3xl font-bold text-ink">{image.title}</p>
                   </div>
                 </div>
               ))}
@@ -245,11 +265,11 @@ export default function HomePage() {
           </div>
           <div className="grid gap-5 sm:grid-cols-2">
             {trustPoints.map(({ title, icon: Icon }) => (
-              <div key={title} className="glass-card flex items-center gap-4 p-5">
-                <div className="rounded-2xl bg-accent/15 p-3 text-accent">
+              <div key={title} className="premium-card flex items-center gap-4 p-5">
+                <div className="rounded-2xl bg-[#f6e9dc] p-3 text-accentDark">
                   <Icon className="h-6 w-6" />
                 </div>
-                <p className="font-display text-lg font-bold text-ink">{title}</p>
+                <p className="font-display text-3xl font-bold text-ink">{title}</p>
               </div>
             ))}
           </div>
@@ -278,16 +298,16 @@ export default function HomePage() {
             <SectionHeading
               eyebrow="Quick Quote"
               title="Request a callback in minutes"
-              description="Share your move details and our team will contact you with the best price and schedule."
-            />
-            <div className="mt-8 grid gap-5 sm:grid-cols-2">
-              {quoteVisuals.map((image) => (
-                <div key={image.caption} className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-soft">
-                  <img src={image.src} alt={image.alt} className="h-56 w-full object-cover" />
-                  <p className="p-4 text-sm font-semibold leading-7 text-slate-700">{image.caption}</p>
-                </div>
-              ))}
-            </div>
+            description="Share your move details and our team will contact you with the best price and schedule."
+          />
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+            {quoteVisuals.map((image) => (
+              <div key={image.caption} className="premium-card overflow-hidden">
+                <img src={image.src} alt={image.alt} className="h-56 w-full object-cover" />
+                <p className="p-4 text-sm font-semibold leading-8 text-slate-700">{image.caption}</p>
+              </div>
+            ))}
+          </div>
           </div>
           <LeadForm
             formData={formData}
@@ -302,7 +322,7 @@ export default function HomePage() {
 
       <AnimatedSection className="section-pad">
         <div className="container-shell">
-          <div className="glass-card overflow-hidden p-8 sm:p-10">
+          <div className="section-hero overflow-hidden p-8 sm:p-10">
             <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
               <div>
                 <SectionHeading
@@ -312,7 +332,7 @@ export default function HomePage() {
                 />
                 <div className="mt-8 grid gap-3 sm:grid-cols-2">
                   {['Jaipur', 'Delhi NCR', 'Pune', 'Mumbai', 'Ahmedabad', 'Bengaluru'].map((city) => (
-                    <div key={city} className="rounded-2xl bg-slate-100 px-4 py-3 text-sm font-semibold text-ink shadow-sm">
+                    <div key={city} className="rounded-2xl border border-[#e7ddd3] bg-white/90 px-4 py-3 text-sm font-semibold text-ink shadow-sm">
                       {city}
                     </div>
                   ))}

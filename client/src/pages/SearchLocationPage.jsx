@@ -41,49 +41,51 @@ export default function SearchLocationPage() {
 
       <AnimatedSection className="section-pad">
         <div className="container-shell">
-          <SectionHeading
-            eyebrow="Search by Location"
-            title="Find packers and movers service coverage by city"
-            description="Search your city, route, or service type to check availability and popular relocation corridors."
-            centered
-          />
+          <div className="section-hero p-8 sm:p-10">
+            <SectionHeading
+              eyebrow="Search by Location"
+              title="Find packers and movers service coverage by city"
+              description="Search your city, route, or service type to check availability and popular relocation corridors."
+              centered
+            />
 
-          <div className="mx-auto mt-10 max-w-3xl">
-            <div className="glass-card flex items-center gap-3 px-4 py-3">
-              <Search className="h-5 w-5 text-brand-700" />
-              <input
-                type="text"
-                className="w-full bg-transparent text-sm text-ink outline-none placeholder:text-slate-400"
-                placeholder="Search Jaipur, Delhi, bike transport, office relocation..."
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-              />
+            <div className="mx-auto mt-10 max-w-3xl">
+              <div className="premium-card flex items-center gap-3 px-4 py-3">
+                <Search className="h-5 w-5 text-brand-700" />
+                <input
+                  type="text"
+                  className="w-full bg-transparent text-sm text-ink outline-none placeholder:text-slate-400"
+                  placeholder="Search Jaipur, Delhi, bike transport, office relocation..."
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                />
+              </div>
             </div>
-          </div>
 
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm">
-            {['Jaipur', 'Delhi', 'Mumbai', 'Pune', 'Bangalore', 'Household Shifting'].map((item) => (
-              <button
-                key={item}
-                type="button"
-                onClick={() => setQuery(item)}
-                className="rounded-full border border-slate-200 bg-white px-4 py-2 font-semibold text-slate-700 transition hover:border-brand-500 hover:text-brand-700"
-              >
-                {item}
-              </button>
-            ))}
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm">
+              {['Jaipur', 'Delhi', 'Mumbai', 'Pune', 'Bangalore', 'Household Shifting'].map((item) => (
+                <button
+                  key={item}
+                  type="button"
+                  onClick={() => setQuery(item)}
+                  className="rounded-full border border-[#ddcdbb] bg-white/90 px-4 py-2 font-semibold text-slate-700 transition hover:border-brand-500 hover:text-brand-700"
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
           </div>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {filteredLocations.map((location) => (
-              <div key={location.city} className="glass-card p-6">
+              <div key={location.city} className="premium-card p-6">
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <div className="flex items-center gap-2 text-brand-700">
                       <MapPin className="h-5 w-5" />
                       <p className="text-sm font-bold uppercase tracking-[0.18em]">{location.state}</p>
                     </div>
-                    <h3 className="mt-3 font-display text-2xl font-extrabold text-ink">{location.city}</h3>
+                    <h3 className="mt-3 font-display text-4xl font-bold text-ink">{location.city}</h3>
                   </div>
                   <span className="rounded-full bg-brand-50 px-3 py-2 text-xs font-bold text-brand-700">
                     {location.coverage}
@@ -119,7 +121,7 @@ export default function SearchLocationPage() {
 
           {filteredLocations.length === 0 && (
             <div className="mx-auto mt-12 max-w-2xl rounded-3xl border border-dashed border-slate-300 bg-white/70 p-10 text-center">
-              <h3 className="font-display text-2xl font-bold text-ink">No exact match found</h3>
+              <h3 className="font-display text-4xl font-bold text-ink">No exact match found</h3>
               <p className="mt-3 text-sm leading-7 text-slate-600">
                 Try searching with a nearby city, a major route, or a service like household shifting or bike transport.
               </p>

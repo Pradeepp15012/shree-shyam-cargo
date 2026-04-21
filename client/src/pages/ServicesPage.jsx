@@ -15,12 +15,14 @@ export default function ServicesPage() {
 
       <AnimatedSection className="section-pad">
         <div className="container-shell">
-          <SectionHeading
-            eyebrow="Our Services"
-            title="Professional moving solutions for every relocation need"
-            description="We deliver dependable support for residential, corporate, and vehicle transportation requirements."
-            centered
-          />
+          <div className="section-hero p-8 text-center sm:p-10">
+            <SectionHeading
+              eyebrow="Our Services"
+              title="Professional moving solutions for every relocation need"
+              description="We deliver dependable support for residential, corporate, and vehicle transportation requirements."
+              centered
+            />
+          </div>
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {services.map((service) => (
               <ServiceCard key={service.title} {...service} />
@@ -31,4 +33,3 @@ export default function ServicesPage() {
     </>
   );
 }
-

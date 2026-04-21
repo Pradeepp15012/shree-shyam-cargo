@@ -49,10 +49,10 @@ export default function LocationDetailPage() {
       <AnimatedSection className="section-pad">
         <div className="container-shell grid gap-10 lg:grid-cols-[1.08fr_0.92fr]">
           <div>
-            <p className="inline-flex rounded-full border border-brand-200 bg-brand-50 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-700">
+            <p className="eyebrow-pill">
               Packers & Movers in {location.city}
             </p>
-            <h1 className="mt-6 font-display text-4xl font-extrabold leading-tight text-ink sm:text-5xl">
+            <h1 className="mt-6 font-display text-5xl font-bold leading-tight text-ink sm:text-6xl">
               Trusted relocation support for {location.city}, {location.state}
             </h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">{intro}</p>
@@ -69,22 +69,22 @@ export default function LocationDetailPage() {
             </div>
 
             <div className="mt-10 grid gap-4 sm:grid-cols-3">
-              <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-soft">
+              <div className="metric-card">
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">Coverage</p>
-                <p className="mt-3 font-display text-2xl font-bold text-ink">{location.coverage}</p>
+                <p className="mt-3 font-display text-3xl font-bold text-ink">{location.coverage}</p>
               </div>
-              <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-soft">
+              <div className="metric-card">
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">Response Time</p>
-                <p className="mt-3 font-display text-2xl font-bold text-ink">{location.responseTime}</p>
+                <p className="mt-3 font-display text-3xl font-bold text-ink">{location.responseTime}</p>
               </div>
-              <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-soft">
+              <div className="metric-card">
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">Service City</p>
-                <p className="mt-3 font-display text-2xl font-bold text-ink">{location.city}</p>
+                <p className="mt-3 font-display text-3xl font-bold text-ink">{location.city}</p>
               </div>
             </div>
           </div>
 
-          <div className="glass-card overflow-hidden p-4">
+          <div className="section-hero overflow-hidden p-4">
             <div className="overflow-hidden rounded-[2rem]">
               <img
                 src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1200&q=80"
@@ -97,7 +97,7 @@ export default function LocationDetailPage() {
                 <MapPin className="h-5 w-5" />
                 <p className="text-sm font-bold uppercase tracking-[0.2em]">{location.state}</p>
               </div>
-              <h2 className="mt-3 font-display text-2xl font-bold text-ink">{location.city} Branch Support Highlights</h2>
+              <h2 className="mt-3 font-display text-4xl font-bold text-ink">{location.city} Branch Support Highlights</h2>
               <div className="mt-5 space-y-4 text-sm leading-7 text-slate-600">
                 <p className="flex items-start gap-3">
                   <Truck className="mt-1 h-4 w-4 text-accent" />
@@ -128,9 +128,9 @@ export default function LocationDetailPage() {
           </div>
           <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
             {location.services.map((service) => (
-              <div key={service} className="glass-card p-5">
+              <div key={service} className="premium-card p-5">
                 <p className="text-sm font-bold uppercase tracking-[0.2em] text-brand-700">{location.city}</p>
-                <h3 className="mt-3 font-display text-xl font-bold text-ink">{service}</h3>
+                <h3 className="mt-3 font-display text-3xl font-bold text-ink">{service}</h3>
                 <p className="mt-3 text-sm leading-7 text-slate-600">
                   Dedicated planning, protected handling, and route-ready support for {service.toLowerCase()} jobs in and around {location.city}.
                 </p>
@@ -142,7 +142,7 @@ export default function LocationDetailPage() {
 
       <AnimatedSection className="section-pad">
         <div className="container-shell grid gap-10 lg:grid-cols-2">
-          <div className="glass-card p-8">
+          <div className="section-hero p-8">
             <SectionHeading
               eyebrow="Popular Routes"
               title={`Frequently requested moving routes from ${location.city}`}
@@ -157,7 +157,7 @@ export default function LocationDetailPage() {
             </div>
           </div>
 
-          <div className="glass-card p-8">
+          <div className="section-hero p-8">
             <SectionHeading
               eyebrow="Process"
               title={`How we manage moves in ${location.city}`}
@@ -186,8 +186,8 @@ export default function LocationDetailPage() {
           />
           <div className="mt-10 grid gap-5 lg:grid-cols-3">
             {faqItems.map((item) => (
-              <div key={item.question} className="glass-card p-6">
-                <h3 className="font-display text-xl font-bold text-ink">{item.question}</h3>
+              <div key={item.question} className="premium-card p-6">
+                <h3 className="font-display text-3xl font-bold text-ink">{item.question}</h3>
                 <p className="mt-4 text-sm leading-7 text-slate-600">{item.answer}</p>
               </div>
             ))}

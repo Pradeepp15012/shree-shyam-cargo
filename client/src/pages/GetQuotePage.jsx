@@ -52,12 +52,19 @@ export default function GetQuotePage() {
 
       <AnimatedSection className="section-pad">
         <div className="container-shell grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="space-y-8">
+          <div className="section-hero p-8 sm:p-10">
             <SectionHeading
               eyebrow="Get Quote"
               title="Share your move details and receive a fast estimate"
               description="Provide pickup, destination, shifting date, and item details so our team can prepare the right moving plan."
             />
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {['Route planning assistance', 'Packing material guidance', 'Transparent price discussion', 'Fast callback support'].map((item) => (
+                <div key={item} className="rounded-2xl border border-[#e3d6c7] bg-white/80 px-4 py-4 text-sm font-semibold text-slate-700">
+                  {item}
+                </div>
+              ))}
+            </div>
           </div>
           <LeadForm
             formData={formData}
