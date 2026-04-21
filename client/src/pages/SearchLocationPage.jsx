@@ -62,7 +62,7 @@ export default function SearchLocationPage() {
           </div>
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm">
-            {['Jaipur', 'Delhi', 'Mumbai', 'Pune', 'Bengaluru', 'Household Shifting'].map((item) => (
+            {['Jaipur', 'Delhi', 'Mumbai', 'Pune', 'Bangalore', 'Household Shifting'].map((item) => (
               <button
                 key={item}
                 type="button"
@@ -105,9 +105,14 @@ export default function SearchLocationPage() {
                   </p>
                 </div>
 
-                <Link to="/get-quote" className="btn-primary mt-6 w-full">
-                  Get Quote for {location.city}
-                </Link>
+                <div className="mt-6 flex flex-col gap-3">
+                  <Link to={`/locations/${location.slug}`} className="btn-primary w-full">
+                    Open {location.city} Page
+                  </Link>
+                  <Link to="/get-quote" className="btn-outline w-full">
+                    Get Quote for {location.city}
+                  </Link>
+                </div>
               </div>
             ))}
           </div>

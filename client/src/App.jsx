@@ -6,6 +6,7 @@ import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import GetQuotePage from './pages/GetQuotePage';
 import HomePage from './pages/HomePage';
+import LocationDetailPage from './pages/LocationDetailPage';
 import NotFoundPage from './pages/NotFoundPage';
 import SearchLocationPage from './pages/SearchLocationPage';
 import ServicesPage from './pages/ServicesPage';
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/search-location" element={<SearchLocationPage />} />
+        <Route path="/locations/:locationSlug" element={<LocationDetailPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/get-quote" element={<GetQuotePage />} />
       </Route>

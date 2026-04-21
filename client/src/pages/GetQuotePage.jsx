@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import AnimatedSection from '../components/AnimatedSection';
-import DistanceEstimator from '../components/DistanceEstimator';
 import LeadForm from '../components/LeadForm';
 import SectionHeading from '../components/SectionHeading';
 import Seo from '../components/Seo';
@@ -47,7 +46,7 @@ export default function GetQuotePage() {
     <>
       <Seo
         title="Get Quote | Shree Shyam Cargo Packers & Movers"
-        description="Request a detailed moving quote with pickup, drop, date, items, and travel estimate."
+        description="Request a detailed moving quote with pickup, drop, date, and item details."
         path="/get-quote"
       />
 
@@ -59,7 +58,6 @@ export default function GetQuotePage() {
               title="Share your move details and receive a fast estimate"
               description="Provide pickup, destination, shifting date, and item details so our team can prepare the right moving plan."
             />
-            <DistanceEstimator />
           </div>
           <LeadForm
             formData={formData}

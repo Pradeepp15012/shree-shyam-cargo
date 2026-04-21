@@ -2,7 +2,6 @@ import { ArrowRight, PhoneCall } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import AnimatedSection from '../components/AnimatedSection';
-import DistanceEstimator from '../components/DistanceEstimator';
 import LeadForm from '../components/LeadForm';
 import MapEmbed from '../components/MapEmbed';
 import SectionHeading from '../components/SectionHeading';
@@ -24,6 +23,60 @@ const defaultForm = {
   goodsType: '',
   message: ''
 };
+
+const heroGallery = [
+  {
+    src: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=900&q=80',
+    alt: 'Packers and movers team loading boxes into a delivery truck',
+    label: 'Professional loading crew'
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1600518464441-9154a4dea21b?auto=format&fit=crop&w=900&q=80',
+    alt: 'Packed household boxes arranged safely during a home move',
+    label: 'Secure household packing'
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=900&q=80',
+    alt: 'Relocation truck prepared for intercity packers and movers service',
+    label: 'Intercity transport ready'
+  }
+];
+
+const moveMoments = [
+  {
+    src: 'https://images.unsplash.com/photo-1595079835353-fb3f0a4f4f34?auto=format&fit=crop&w=900&q=80',
+    alt: 'Movers wrapping furniture carefully before transport',
+    title: 'Furniture wrapping'
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1603796846097-bee99e4a601f?auto=format&fit=crop&w=900&q=80',
+    alt: 'Delivery truck on the road for interstate logistics service',
+    title: 'On-road delivery'
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80',
+    alt: 'Warehouse style moving boxes stacked and labeled for relocation',
+    title: 'Organized box handling'
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1604147706283-d7119b5b822c?auto=format&fit=crop&w=900&q=80',
+    alt: 'Team member carrying packed cartons into a new home',
+    title: 'Doorstep delivery support'
+  }
+];
+
+const quoteVisuals = [
+  {
+    src: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=900&q=80',
+    alt: 'Family relocation boxes packed neatly inside a home',
+    caption: 'Household shifting with careful room-by-room packing'
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1616400619175-5beda3a17896?auto=format&fit=crop&w=900&q=80',
+    alt: 'Commercial mover handling office cartons and business equipment',
+    caption: 'Office moves planned to reduce downtime'
+  }
+];
 
 export default function HomePage() {
   const [formData, setFormData] = useState(defaultForm);
@@ -91,19 +144,47 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="glass-card p-4 sm:p-6">
-            <div className="rounded-[2rem] bg-gradient-to-br from-ink via-brand-800 to-brand-500 p-8 text-white">
-              <p className="text-sm font-bold uppercase tracking-[0.2em] text-accent">Instant Support</p>
-              <h2 className="mt-4 font-display text-3xl font-bold">Move smarter with a team that plans every detail.</h2>
-              <ul className="mt-6 space-y-4 text-sm text-white/85">
-                <li>Premium packing materials and careful handling</li>
-                <li>Dedicated move coordination and tracking updates</li>
-                <li>Affordable intercity and local shifting packages</li>
-              </ul>
-              <Link to="/get-quote" className="btn-secondary mt-8 w-full">
-                Start Your Quote
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+          <div className="space-y-5">
+            <div className="grid gap-5 sm:grid-cols-[1.1fr_0.9fr]">
+              <div className="glass-card overflow-hidden p-3">
+                <div className="relative h-[320px] overflow-hidden rounded-[2rem]">
+                  <img
+                    src={heroGallery[0].src}
+                    alt={heroGallery[0].alt}
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent p-5 text-white">
+                    <p className="text-xs font-bold uppercase tracking-[0.25em] text-accent">Live Moving Operations</p>
+                    <p className="mt-2 font-display text-2xl font-bold">{heroGallery[0].label}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="grid gap-5">
+                {heroGallery.slice(1).map((image) => (
+                  <div key={image.label} className="glass-card overflow-hidden p-3">
+                    <div className="relative h-[148px] overflow-hidden rounded-[1.75rem]">
+                      <img src={image.src} alt={image.alt} className="h-full w-full object-cover" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-transparent" />
+                      <p className="absolute bottom-4 left-4 right-4 font-display text-lg font-bold text-white">{image.label}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="glass-card p-4 sm:p-6">
+              <div className="rounded-[2rem] bg-gradient-to-br from-ink via-brand-800 to-brand-500 p-8 text-white">
+                <p className="text-sm font-bold uppercase tracking-[0.2em] text-accent">Instant Support</p>
+                <h2 className="mt-4 font-display text-3xl font-bold">Move smarter with a team that plans every detail.</h2>
+                <ul className="mt-6 space-y-4 text-sm text-white/85">
+                  <li>Premium packing materials and careful handling</li>
+                  <li>Dedicated move coordination and tracking updates</li>
+                  <li>Affordable intercity and local shifting packages</li>
+                </ul>
+                <Link to="/get-quote" className="btn-secondary mt-8 w-full">
+                  Start Your Quote
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -121,6 +202,34 @@ export default function HomePage() {
             {services.map((service) => (
               <ServiceCard key={service.title} {...service} />
             ))}
+          </div>
+        </div>
+      </AnimatedSection>
+
+      <AnimatedSection className="section-pad pt-0">
+        <div className="container-shell">
+          <div className="glass-card overflow-hidden p-6 sm:p-8">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+              <div className="max-w-2xl">
+                <p className="text-sm font-bold uppercase tracking-[0.2em] text-brand-700">Moving In Action</p>
+                <h2 className="mt-3 font-display text-3xl font-bold text-ink sm:text-4xl">
+                  Real visuals that match the services customers expect from a moving company
+                </h2>
+              </div>
+              <p className="max-w-xl text-sm leading-7 text-slate-600">
+                Packing, loading, transport, and doorstep delivery visuals help visitors instantly understand that this is a genuine packers and movers service.
+              </p>
+            </div>
+            <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+              {moveMoments.map((image) => (
+                <div key={image.title} className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-soft">
+                  <img src={image.src} alt={image.alt} className="h-64 w-full object-cover" />
+                  <div className="p-5">
+                    <p className="font-display text-xl font-bold text-ink">{image.title}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </AnimatedSection>
@@ -171,8 +280,13 @@ export default function HomePage() {
               title="Request a callback in minutes"
               description="Share your move details and our team will contact you with the best price and schedule."
             />
-            <div className="mt-8">
-              <DistanceEstimator />
+            <div className="mt-8 grid gap-5 sm:grid-cols-2">
+              {quoteVisuals.map((image) => (
+                <div key={image.caption} className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-soft">
+                  <img src={image.src} alt={image.alt} className="h-56 w-full object-cover" />
+                  <p className="p-4 text-sm font-semibold leading-7 text-slate-700">{image.caption}</p>
+                </div>
+              ))}
             </div>
           </div>
           <LeadForm
