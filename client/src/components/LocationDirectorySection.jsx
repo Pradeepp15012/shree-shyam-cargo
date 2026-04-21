@@ -42,23 +42,6 @@ export default function LocationDirectorySection() {
     return allLocations.filter((location) => location.label.toLowerCase().includes(normalizedQuery));
   }, [allLocations, normalizedQuery]);
 
-  const desktopColumns = useMemo(() => {
-    if (!normalizedQuery) {
-      return locationColumns.map((column) =>
-        column.map((city) => ({
-          rawCity: city,
-          label: formatLocationLabel(city)
-        }))
-      );
-    }
-
-    const chunkSize = Math.ceil(filteredFlatLocations.length / 5) || 1;
-
-    return Array.from({ length: 5 }, (_, index) =>
-      filteredFlatLocations.slice(index * chunkSize, (index + 1) * chunkSize)
-    ).filter((column) => column.length > 0);
-  }, [filteredFlatLocations, normalizedQuery]);
-
   return (
     <AnimatedSection className="section-pad border-t border-[#ead9ca] bg-gradient-to-b from-[#fffaf5] via-[#fff4e8] to-[#f9ecde]">
       <div className="container-shell">
@@ -140,40 +123,18 @@ export default function LocationDirectorySection() {
             </p>
           </div>
           {filteredFlatLocations.length > 0 ? (
-            <>
-              <div className="mt-6 grid gap-3 md:hidden">
+            <div className="mt-6 grid gap-3 md:grid-cols-2 xl:grid-cols-5">
               {filteredFlatLocations.map(({ rawCity, label }) => (
-                  <Link
-                    key={rawCity}
-                    to={`/locations/${createLocationSlug(rawCity)}`}
-                    className="group flex items-start gap-3 rounded-2xl border border-[#ecd9c7] bg-[#fbf4ec] px-4 py-3 text-sm font-semibold leading-7 text-slate-700 transition hover:border-[#d58d61] hover:bg-[#fff0e0] hover:text-[#9f4f2b]"
-                  >
-                    <span className="mt-2 h-2 w-2 rounded-full bg-[#c7a38a] transition group-hover:bg-[#b85c32]" />
-                    <span>Packers & Movers {label}</span>
-                  </Link>
-                ))}
-              </div>
-
-              <div className="hidden gap-x-10 gap-y-4 md:grid md:grid-cols-2 xl:grid-cols-5">
-                {desktopColumns.map((column, columnIndex) => (
-              <ul key={columnIndex} className="mt-6 space-y-3">
-                {column.map(({ rawCity, label }) => {
-                  return (
-                    <li key={rawCity}>
-                      <Link
-                        to={`/locations/${createLocationSlug(rawCity)}`}
-                        className="group inline-flex items-start gap-3 rounded-2xl px-2 py-1 text-sm font-semibold leading-7 text-slate-600 transition hover:bg-[#fff0e0] hover:text-[#9f4f2b]"
-                      >
-                        <span className="mt-2 h-2 w-2 rounded-full bg-[#c7a38a] transition group-hover:bg-[#b85c32]" />
-                        <span>Packers & Movers {label}</span>
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-                ))}
-              </div>
-            </>
+                <Link
+                  key={rawCity}
+                  to={`/locations/${createLocationSlug(rawCity)}`}
+                  className="group flex items-start gap-3 rounded-2xl border border-[#ecd9c7] bg-[#fbf4ec] px-4 py-3 text-sm font-semibold leading-7 text-slate-700 transition hover:border-[#d58d61] hover:bg-[#fff0e0] hover:text-[#9f4f2b]"
+                >
+                  <span className="mt-2 h-2 w-2 rounded-full bg-[#c7a38a] transition group-hover:bg-[#b85c32]" />
+                  <span>Packers & Movers {label}</span>
+                </Link>
+              ))}
+            </div>
           ) : (
             <div className="mt-6 rounded-[1.75rem] border border-dashed border-[#d8b9a0] bg-[#fbf2e8] p-8 text-center">
               <h4 className="font-display text-2xl font-bold text-ink">No city matched your search</h4>
