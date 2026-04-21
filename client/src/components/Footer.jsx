@@ -155,7 +155,7 @@ export default function Footer() {
               </p>
             </div>
 
-            <div className="mt-8">
+            {/* <div className="mt-8">
               <p className="text-xl font-bold text-white">We Accept All</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {paymentOptions.map((item) => (
@@ -167,9 +167,9 @@ export default function Footer() {
                   </span>
                 ))}
               </div>
-            </div>
+            </div> */}
 
-            <div className="mt-8">
+            {/* <div className="mt-8">
               <p className="text-xl font-bold text-white">Popular Cities</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {featuredCities.map((city) => (
@@ -182,7 +182,7 @@ export default function Footer() {
                   </Link>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-5">
               <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-white/80">

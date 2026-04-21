@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "start": "next start"
   },
   "dependencies": {
     "@react-google-maps/api": "^2.20.5",
@@ -29,4 +29,3 @@
     "vite": "^6.0.3"
   }
 }
-
