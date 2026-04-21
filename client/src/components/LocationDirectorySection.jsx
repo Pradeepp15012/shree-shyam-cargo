@@ -1,5 +1,5 @@
 import { ArrowRight, Building2, MapPinned, Search, Truck } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AnimatedSection from './AnimatedSection';
 import SectionHeading from './SectionHeading';
@@ -23,15 +23,34 @@ const formatLocationLabel = (city) =>
 
 export default function LocationDirectorySection() {
   const [query, setQuery] = useState('');
+  const [isMobile, setIsMobile] = useState(false);
+  const [showAllMobile, setShowAllMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    const syncMobileState = (event) => {
+      setIsMobile(event.matches);
+    };
+
+    syncMobileState(mediaQuery);
+
+    if (typeof mediaQuery.addEventListener === 'function') {
+      mediaQuery.addEventListener('change', syncMobileState);
+      return () => mediaQuery.removeEventListener('change', syncMobileState);
+    }
+
+    mediaQuery.addListener(syncMobileState);
+    return () => mediaQuery.removeListener(syncMobileState);
+  }, []);
 
   const normalizedQuery = query.trim().toLowerCase();
   const allLocations = useMemo(
     () =>
       locationColumns.flat().map((city) => ({
         rawCity: city,
-        label: formatLocationLabel(city)
+        label: formatLocationLabel(city),
       })),
-    []
+    [],
   );
 
   const filteredFlatLocations = useMemo(() => {
@@ -41,6 +60,20 @@ export default function LocationDirectorySection() {
 
     return allLocations.filter((location) => location.label.toLowerCase().includes(normalizedQuery));
   }, [allLocations, normalizedQuery]);
+
+  useEffect(() => {
+    setShowAllMobile(false);
+  }, [normalizedQuery]);
+
+  const visibleLocations = useMemo(() => {
+    if (!isMobile || showAllMobile || normalizedQuery) {
+      return filteredFlatLocations;
+    }
+
+    return filteredFlatLocations.slice(0, 12);
+  }, [filteredFlatLocations, isMobile, normalizedQuery, showAllMobile]);
+
+  const hiddenLocationCount = filteredFlatLocations.length - visibleLocations.length;
 
   return (
     <AnimatedSection className="section-pad border-t border-[#ead9ca] bg-gradient-to-b from-[#fffaf5] via-[#fff7ef] to-[#f4ede3]">
@@ -57,10 +90,10 @@ export default function LocationDirectorySection() {
           </Link>
         </div>
 
-        <div className="mt-8 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="premium-dark p-6 sm:p-8">
+        <div className="mt-8 grid gap-4 xl:grid-cols-[1.1fr_0.9fr]">
+          <div className="premium-dark self-start p-6 sm:p-8">
             <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#ffe2b8]">Location Coverage</p>
-            <h3 className="mt-4 max-w-2xl font-display text-4xl font-bold sm:text-5xl">
+            <h3 className="mt-4 max-w-2xl font-display text-3xl font-bold leading-tight sm:text-5xl">
               Choose your city and land directly on a dedicated movers service page.
             </h3>
             <p className="mt-4 max-w-2xl text-sm leading-8 text-white/85">
@@ -68,7 +101,7 @@ export default function LocationDirectorySection() {
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               {summaryItems.map(({ icon: Icon, label }) => (
-                <div key={label} className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/12 px-4 py-2 text-sm font-semibold text-white">
+                <div key={label} className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white">
                   <Icon className="h-4 w-4 text-[#ffe2b8]" />
                   {label}
                 </div>
@@ -84,8 +117,8 @@ export default function LocationDirectorySection() {
                 className="premium-card group p-5 transition hover:-translate-y-1 hover:border-[#d58d61]"
               >
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#a3562b]">Featured City</p>
-                <h3 className="mt-3 font-display text-3xl font-bold text-ink">{city}</h3>
-                <p className="mt-3 text-sm leading-8 text-slate-600">
+                <h3 className="mt-3 font-display text-2xl font-bold text-ink sm:text-3xl">{city}</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-600 sm:leading-8">
                   Open the dedicated {city} page for routes, service details, FAQs, and quick quote actions.
                 </p>
                 <span className="mt-5 inline-flex items-center text-sm font-bold text-[#a3562b]">
@@ -101,7 +134,7 @@ export default function LocationDirectorySection() {
           <div className="flex flex-col gap-4 border-b border-[#ecd9c7] pb-5 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#a3562b]">All Service Cities</p>
-              <h3 className="mt-2 font-display text-4xl font-bold text-ink">Packers & Movers city directory</h3>
+              <h3 className="mt-2 font-display text-3xl font-bold leading-tight text-ink sm:text-4xl">Packers & Movers city directory</h3>
             </div>
             <p className="max-w-2xl text-sm leading-8 text-slate-600">
               Click any city below to open its detailed page. This section stays available before the footer on every page for easier navigation.
@@ -123,18 +156,29 @@ export default function LocationDirectorySection() {
             </p>
           </div>
           {filteredFlatLocations.length > 0 ? (
-            <div className="mt-6 grid gap-3 md:grid-cols-2 xl:grid-cols-5">
-              {filteredFlatLocations.map(({ rawCity, label }) => (
-                <Link
-                  key={rawCity}
-                  to={`/locations/${createLocationSlug(rawCity)}`}
-                className="group flex items-start gap-3 rounded-2xl border border-[#ecd9c7] bg-[#fbf4ec] px-4 py-3 text-sm font-semibold leading-7 text-slate-700 transition hover:-translate-y-0.5 hover:border-[#d58d61] hover:bg-[#fff0e0] hover:text-[#9f4f2b]"
-              >
-                  <span className="mt-2 h-2 w-2 rounded-full bg-[#c7a38a] transition group-hover:bg-[#b85c32]" />
-                  <span>Packers & Movers {label}</span>
-                </Link>
-              ))}
-            </div>
+            <>
+              <div className="mt-6 grid gap-3 md:grid-cols-2 xl:grid-cols-5">
+                {visibleLocations.map(({ rawCity, label }) => (
+                  <Link
+                    key={rawCity}
+                    to={`/locations/${createLocationSlug(rawCity)}`}
+                    className="group flex items-start gap-3 rounded-2xl border border-[#ecd9c7] bg-[#fbf4ec] px-4 py-3 text-sm font-semibold leading-7 text-slate-700 transition hover:-translate-y-0.5 hover:border-[#d58d61] hover:bg-[#fff0e0] hover:text-[#9f4f2b]"
+                  >
+                    <span className="mt-2 h-2 w-2 rounded-full bg-[#c7a38a] transition group-hover:bg-[#b85c32]" />
+                    <span>Packers & Movers {label}</span>
+                  </Link>
+                ))}
+              </div>
+              {isMobile && !normalizedQuery && hiddenLocationCount > 0 && (
+                <button
+                  type="button"
+                  onClick={() => setShowAllMobile((prev) => !prev)}
+                  className="btn-outline mt-6 w-full sm:w-auto"
+                >
+                  {showAllMobile ? 'Show Fewer Cities' : `Show ${hiddenLocationCount} More Cities`}
+                </button>
+              )}
+            </>
           ) : (
             <div className="mt-6 rounded-[1.75rem] border border-dashed border-[#d8b9a0] bg-[#fbf2e8] p-8 text-center">
               <h4 className="font-display text-2xl font-bold text-ink">No city matched your search</h4>
