@@ -118,7 +118,7 @@ export default function HomePage() {
             <p className="eyebrow-pill">
               PAN India Relocation Experts
             </p>
-            <h1 className="mt-6 max-w-4xl font-display text-6xl font-bold leading-[0.95] text-ink sm:text-7xl">
+            <h1 className="mt-6 max-w-4xl font-display text-2xl font-medium leading-[0.95] text-ink sm:text-7xl">
               Premium movers for homes, offices, and high-trust relocations across India.
             </h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600 sm:text-xl">

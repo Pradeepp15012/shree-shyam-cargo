@@ -3,6 +3,7 @@ import Layout from './components/Layout';
 import AdminPage from './pages/AdminPage';
 import LoginPage from './pages/LoginPage';
 import AboutPage from './pages/AboutPage';
+import AboutDetailPage from './pages/AboutDetailPage';
 import ContactPage from './pages/ContactPage';
 import GetQuotePage from './pages/GetQuotePage';
 import HomePage from './pages/HomePage';
@@ -22,6 +23,7 @@ export default function App() {
       <Route element={<Layout />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/about/:sectionSlug" element={<AboutDetailPage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/search-location" element={<SearchLocationPage />} />
         <Route path="/locations/:locationSlug" element={<LocationDetailPage />} />

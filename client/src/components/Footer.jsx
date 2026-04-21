@@ -12,17 +12,9 @@ import {
   Youtube
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { aboutSectionLinks } from '../data/aboutSections';
 import { company, services } from '../data/site';
 import { callLink, whatsappLink } from '../utils/helpers';
-
-const aboutLinks = [
-  { label: 'About Us', to: '/about' },
-  { label: 'Why Choose Us', to: '/about' },
-  { label: 'Our Strength', to: '/about' },
-  { label: 'Achievements', to: '/about' },
-  { label: 'Customer Stories', to: '/about' },
-  { label: 'News & Updates', to: '/' }
-];
 
 const helpLinks = [
   { label: "FAQ's", to: '/contact' },
@@ -122,7 +114,7 @@ export default function Footer() {
 
       <div className="relative container-shell py-16">
         <div className="grid gap-10 xl:grid-cols-[1fr_1fr_1fr_1fr_1fr_1.2fr]">
-          <FooterList title="About Us" links={aboutLinks} />
+          <FooterList title="About Us" links={aboutSectionLinks} />
           <FooterList title="Need Help ?" links={helpLinks} />
           <FooterList title="Services" links={serviceLinks} />
           <FooterList title="Move Categories" links={moveCategories} />
@@ -153,7 +145,7 @@ export default function Footer() {
               </p>
             </div>
 
-            <div className="mt-8 rounded-[1.75rem] border border-white/10 bg-white/5 p-5">
+            {/* <div className="mt-8 rounded-[1.75rem] border border-white/10 bg-white/5 p-5">
               <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-[#f0cda8]">
                 <Truck className="h-4 w-4" />
                 Secure Storage
@@ -165,7 +157,7 @@ export default function Footer() {
                 Explore Service Options
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

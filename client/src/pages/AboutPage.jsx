@@ -1,6 +1,9 @@
+import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import AnimatedSection from '../components/AnimatedSection';
 import SectionHeading from '../components/SectionHeading';
 import Seo from '../components/Seo';
+import { aboutSectionLinks } from '../data/aboutSections';
 import { stats, trustPoints } from '../data/site';
 
 export default function AboutPage() {
@@ -46,6 +49,29 @@ export default function AboutPage() {
                 <p className="font-display text-5xl font-bold text-ink">{item.value}</p>
                 <p className="mt-2 text-sm font-semibold uppercase tracking-[0.16em] text-slate-500">{item.label}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </AnimatedSection>
+
+      <AnimatedSection className="section-pad pt-0">
+        <div className="container-shell">
+          <SectionHeading
+            eyebrow="Explore More"
+            title="Dedicated premium pages for every trust-building topic"
+            description="Visitors can now move deeper into the company story through separate pages for strengths, achievements, customer stories, and brand updates."
+            centered
+          />
+          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {aboutSectionLinks.map((item) => (
+              <Link key={item.slug} to={item.to} className="premium-card group p-6 transition hover:-translate-y-1">
+                <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-accentDark">About Section</p>
+                <h3 className="mt-3 font-display text-3xl font-bold text-ink">{item.label}</h3>
+                <p className="mt-4 inline-flex items-center text-sm font-semibold text-brand-700">
+                  Open page
+                  <ArrowRight className="ml-2 h-4 w-4 transition group-hover:translate-x-1" />
+                </p>
+              </Link>
             ))}
           </div>
         </div>
