@@ -68,8 +68,8 @@ const socialLinks = [
 function FooterList({ title, links }) {
   return (
     <div>
-      <h3 className="font-display text-xl font-bold text-white">{title}</h3>
-      <div className="mt-5 grid gap-3 text-sm text-slate-200">
+      <h3 className="flex font-display text-xl font-bold text-white">{title}</h3>
+      <div className="mt-2 grid gap-1 text-sm text-slate-200">
         {links.map((item) => (
           <Link key={item.label} to={item.to} className="transition hover:text-white">
             {item.label}
@@ -89,13 +89,17 @@ export default function Footer() {
         <div className="container-shell py-12">
           <div className="premium-dark p-8 sm:p-10">
             <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-              <div className="max-w-3xl">
-                <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#f0cda8]">Need Movers Fast?</p>
-                <h2 className="mt-4 font-display text-4xl font-bold sm:text-5xl">
-                  Plan your move with a team that handles packing, transport, and delivery end to end.
+              <div className="max-w-1xl">
+                <p className="text-sm -mt-5 font-bold uppercase tracking-[0.24em] text-[#f0cda8]">
+                  Need Movers Fast?
+                </p>
+                <h2 className="mt-4 font-display text-1.5xl font-semibold sm:text-1xl">
+                  Plan your move with a team that handles packing, transport,
+                  and delivery end to end.
                 </h2>
-                <p className="mt-4 max-w-2xl text-sm leading-8 text-white/80">
-                  Get quick support for household shifting, office relocation, vehicle transport, storage, and intercity moving across India.
+                <p className="mt-1 max-w-1.5xl text-sm leading-8 text-white/80">
+                  Get quick support for household shifting, office relocation,
+                  vehicle transport, storage, and intercity moving across India.
                 </p>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row">
@@ -103,7 +107,12 @@ export default function Footer() {
                   <PhoneCall className="mr-2 h-4 w-4" />
                   Call Now
                 </a>
-                <a href={whatsappLink} target="_blank" rel="noreferrer" className="btn-primary bg-white text-ink hover:bg-slate-100">
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-primary bg-white text-ink hover:bg-slate-100"
+                >
                   WhatsApp Quote
                 </a>
               </div>
@@ -112,8 +121,8 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="relative container-shell py-16">
-        <div className="grid gap-10 xl:grid-cols-[1fr_1fr_1fr_1fr_1fr_1.2fr]">
+      <div className="flex ml-10 relative container-shell py-1">
+        <div className="grid gap-1 xl:grid-cols-6">
           <FooterList title="About Us" links={aboutSectionLinks} />
           <FooterList title="Need Help ?" links={helpLinks} />
           <FooterList title="Services" links={serviceLinks} />
@@ -121,14 +130,24 @@ export default function Footer() {
           <FooterList title="Other Links" links={otherLinks} />
 
           <div>
-            <h3 className="font-display text-3xl font-bold text-white">Contact</h3>
-            <div className="mt-6 space-y-4 text-sm text-slate-100">
-              <a href={callLink} className="flex items-start gap-3 transition hover:text-white">
+            <h3 className="font-display text-2xl font-bold text-white">
+              Contact
+            </h3>
+            <div className="mt-1 space-y-1 text-sm text-slate-100">
+              <a
+                href={callLink}
+                className="flex items-start gap-2 transition hover:text-white"
+              >
                 <PhoneCall className="mt-0.5 h-4 w-4 text-white/80" />
-                <span className="text-3xl font-extrabold tracking-tight">{company.phone}</span>
+                <span className="text-1xl font-extrabold tracking-tight">
+                  {company.phone}
+                </span>
               </a>
-              <a href={`mailto:${company.email}`} className="flex items-start gap-3 transition hover:text-white">
-                <Mail className="mt-0.5 h-4 w-4 text-white/80" />
+              <a
+                href={`mailto:${company.email}`}
+                className="flex items-start gap-0 transition hover:text-white"
+              >
+                <Mail className="mt-0.5 h-3 w-3 text-white/80" />
                 <span>{company.email}</span>
               </a>
               <p className="flex items-start gap-3">
@@ -141,7 +160,10 @@ export default function Footer() {
               </p>
               <p className="flex items-start gap-3">
                 <ShieldCheck className="mt-0.5 h-4 w-4 text-white/80" />
-                <span>{services.length} core moving solutions with trained handling support</span>
+                <span>
+                  {services.length} core moving solutions with trained handling
+                  support
+                </span>
               </p>
             </div>
 
@@ -162,17 +184,21 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="relative border-t border-white/10 bg-[#0c1424]">
+      <div className="relative border-t border-white/100 bg-[#0c1424]">
         <div className="container-shell flex flex-col gap-6 py-6 xl:flex-row xl:items-center xl:justify-between">
-          <div className="max-w-4xl text-sm leading-8 text-white/80">
+          <div className="max-w-4xl text-sm leading-8 text-white/100">
             <p>
-              {company.name} provides reliable relocation support, professional packing, vehicle transport, office shifting, and moving assistance across major Indian cities with route-focused service planning.
+              {company.name} provides reliable relocation support, professional
+              packing, vehicle transport, office shifting, and moving assistance
+              across major Indian cities with route-focused service planning.
             </p>
-            <p className="mt-3">© {new Date().getFullYear()} {company.name}. All rights reserved.</p>
+            <p className="mt-3">
+              © {new Date().getFullYear()} {company.name}. All rights reserved.
+            </p>
           </div>
 
-          <div className="flex flex-col gap-5 lg:min-w-[420px] xl:items-end">
-            <div className="flex flex-wrap items-center gap-3 text-sm font-semibold text-white xl:justify-end">
+          <div className="flex flex-col gap-5 lg:min-w-[320px] xl:items-end">
+            <div className="flex flex-wrap items-center gap-2 text-sm font-semibold text-white xl:justify-end">
               <Link
                 to="/contact"
                 className="rounded-full border border-white/15 bg-white/5 px-4 py-2 transition hover:bg-white/10 hover:text-white"
@@ -186,16 +212,16 @@ export default function Footer() {
                 Privacy Policy
               </Link>
             </div>
-            <div className="flex flex-wrap items-center gap-3 xl:justify-end">
+            <div className="flex flex-wrap items-center gap-3 mr-20 xl:justify-end">
               {socialLinks.map(({ label, href, icon: Icon }) => (
                 <a
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="group flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:-translate-y-0.5 hover:border-[#f0cda8] hover:bg-white/20"
+                  className="group flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:-translate-y-0.5 hover:border-[#f0cda8] hover:bg-white/20"
                   title={label}
                 >
-                  <Icon className="h-4 w-4 transition group-hover:scale-110" />
+                  <Icon className="h-3 w-3 transition group-hover:scale-110" />
                 </a>
               ))}
             </div>

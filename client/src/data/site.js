@@ -14,7 +14,7 @@ export const company = {
   shortName: "Shree Shyam Cargo",
   phone: import.meta.env.VITE_COMPANY_PHONE || "+918294525141",
   whatsapp: import.meta.env.VITE_WHATSAPP_NUMBER || "918294525141",
-  email: "support@shreeshyamcargo.com",
+  email: "support@shreeshyamcgo.com",
   address: "Near Transport Nagar, Jaipur, Rajasthan, India",
   tagline: "Reliable Packers & Movers",
   whatsappMessage: "Hi, I want to inquire about Packers & Movers service",
