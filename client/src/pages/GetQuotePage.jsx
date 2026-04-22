@@ -52,7 +52,7 @@ export default function GetQuotePage() {
 
       <AnimatedSection className="section-pad">
         <div className="container-shell grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="section-hero p-8 sm:p-10">
+          <div className="flex flex-col section-hero p-8 sm:p-10">
             <SectionHeading
               eyebrow="Get Quote"
               title="Share your move details and receive a fast estimate"

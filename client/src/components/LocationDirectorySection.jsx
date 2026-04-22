@@ -76,7 +76,7 @@ export default function LocationDirectorySection() {
   const hiddenLocationCount = filteredFlatLocations.length - visibleLocations.length;
 
   return (
-    <AnimatedSection className="section-pad border-t border-[#ead9ca] bg-gradient-to-b from-[#fffaf5] via-[#fff7ef] to-[#f4ede3]">
+    <AnimatedSection className="section-pad border-t border-[#171616] bg-gradient-to-b from-[#f0ece8] via-[#fff7ef] to-[#f4ede3]">
       <div className="container-shell">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
@@ -162,9 +162,9 @@ export default function LocationDirectorySection() {
                   <Link
                     key={rawCity}
                     to={`/locations/${createLocationSlug(rawCity)}`}
-                    className="group flex items-start gap-3 rounded-2xl border border-[#ecd9c7] bg-[#fbf4ec] px-4 py-3 text-sm font-semibold leading-7 text-slate-700 transition hover:-translate-y-0.5 hover:border-[#d58d61] hover:bg-[#fff0e0] hover:text-[#9f4f2b]"
+                    className="group flex items-start gap-1 px-1 -py-1 text-sm font-semibold leading-7 text-slate-700 transition hover:-translate-y-0.5 hover:border-[#d58d61] hover:bg-[#fff0e0] hover:text-[#9f4f2b]"
                   >
-                    <span className="mt-2 h-2 w-2 rounded-full bg-[#c7a38a] transition group-hover:bg-[#b85c32]" />
+                    <span className="mt-1 h-1 w-1 rounded-full bg-[#c7a38a] transition group-hover:bg-[#b85c32]" />
                     <span>Packers & Movers {label}</span>
                   </Link>
                 ))}

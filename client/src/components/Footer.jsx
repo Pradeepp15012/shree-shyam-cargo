@@ -122,7 +122,7 @@ export default function Footer() {
       </div>
 
       <div className="flex ml-10 relative container-shell py-1">
-        <div className="grid gap-1 xl:grid-cols-6">
+        <div className="grid gap-1 xl:grid-cols-6 ">
           <FooterList title="About Us" links={aboutSectionLinks} />
           <FooterList title="Need Help ?" links={helpLinks} />
           <FooterList title="Services" links={serviceLinks} />
