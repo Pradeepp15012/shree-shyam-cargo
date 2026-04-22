@@ -4,8 +4,8 @@ import AnimatedSection from '../components/AnimatedSection';
 import LeadForm from '../components/LeadForm';
 import SectionHeading from '../components/SectionHeading';
 import Seo from '../components/Seo';
-import { submitLead } from '../api/api';
 import { services } from '../data/site';
+import { buildQuoteWhatsAppLink } from '../utils/helpers';
 
 const defaultForm = {
   name: '',
@@ -26,20 +26,14 @@ export default function GetQuotePage() {
     setFormData((prev) => ({ ...prev, [event.target.name]: event.target.value }));
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     setLoading(true);
 
-    try {
-      await submitLead(formData);
-      toast.success('Quote request saved successfully.');
-      setFormData(defaultForm);
-    } catch (error) {
-      const validationMessage = error.response?.data?.errors?.[0]?.msg;
-      toast.error(validationMessage || error.response?.data?.message || 'Unable to submit quote.');
-    } finally {
-      setLoading(false);
-    }
+    const whatsappUrl = buildQuoteWhatsAppLink(formData);
+    toast.success('Redirecting to WhatsApp with your quote details.');
+    setFormData(defaultForm);
+    window.location.href = whatsappUrl;
   };
 
   return (

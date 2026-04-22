@@ -19,3 +19,19 @@ export const formatCurrency = (amount) =>
     maximumFractionDigits: 0
   }).format(amount || 0);
 
+export const buildQuoteWhatsAppLink = (formData) => {
+  const details = [
+    'Hi, I want a detailed moving quote.',
+    '',
+    `Name: ${formData.name || 'N/A'}`,
+    `Phone: ${formData.phone || 'N/A'}`,
+    `Pickup: ${formData.pickup || 'N/A'}`,
+    `Drop: ${formData.drop || 'N/A'}`,
+    `Shifting Date: ${formatDate(formData.date)}`,
+    `Service Type: ${formData.serviceType || 'N/A'}`,
+    `Goods Type: ${formData.goodsType || 'N/A'}`,
+    `Message: ${formData.message || 'N/A'}`
+  ];
+
+  return `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(details.join('\n'))}`;
+};

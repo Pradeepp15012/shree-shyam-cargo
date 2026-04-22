@@ -78,16 +78,13 @@ export default function LocationDirectorySection() {
   return (
     <AnimatedSection className="section-pad border-t border-[#171616] bg-gradient-to-b from-[#f0ece8] via-[#fff7ef] to-[#f4ede3]">
       <div className="container-shell">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div className="flex flex-col gap-1 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
             eyebrow="Search By Location"
             title="Find packers and movers service city-wise across India"
             description="Every listed location opens its own city page with service details, routes, moving support information, and quote actions."
           />
-          <Link to="/search-location" className="btn-outline shrink-0 border-[#d9b89f] bg-white/70 hover:border-[#b96f4a] hover:text-[#9f4f2b]">
-            View All Location Pages
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Link>
+          
         </div>
 
         <div className="mt-8 grid gap-4 xl:grid-cols-[1.1fr_0.9fr]">
